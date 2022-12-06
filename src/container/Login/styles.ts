@@ -2,14 +2,27 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.blueColor};
+    h1 {
+      text-align: center;
+      padding-bottom: 1rem;
+      color: ${theme.colors.blackColor};
+      font-size: ${theme.fonts.size.big};
+    }
   `}
 `;
+
 export const Content = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
   ${({ theme }) => css`
     @media (min-width: ${theme.screen.size.medium}) {
       display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
     } ;
   `}
 `;
@@ -31,6 +44,11 @@ export const Form = styled.form`
 export const Button = styled.button`
   ${({ theme }) => css`
     cursor: pointer;
-    color: ${theme.colors.blueColor};
+    width: 30rem;
+    height: 4rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: ${theme.colors.whiteColor};
+    background-color: ${theme.colors.blueColor};
   `}
 `;
