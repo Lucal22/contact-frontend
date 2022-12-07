@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Container from '../../components/Container';
 import Input from './components/Input';
 import { api } from '../../lib/api';
@@ -15,6 +16,8 @@ export default function Login() {
     email: '',
     password: '',
   });
+
+  const { register, handleSubmit } = useForm();
 
   async function loginChanges(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;

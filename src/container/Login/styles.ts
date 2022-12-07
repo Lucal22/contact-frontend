@@ -13,11 +13,14 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   display: flex;
+  padding-top: 10rem;
+
   flex-direction: column;
   align-items: center;
   gap: 3rem;
   ${({ theme }) => css`
     @media (min-width: ${theme.screen.size.medium}) {
+      padding-top: 20rem;
       display: flex;
       flex-direction: row;
       align-items: center;
