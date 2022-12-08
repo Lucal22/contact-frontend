@@ -44,7 +44,21 @@ export const Form = styled.form`
   `}
 `;
 
-export const Button = styled.button`
+export const FormField = styled.div`
+  padding-bottom: 2rem;
+`;
+
+export const Input = styled.input`
+  ${({ theme }) => css`
+    width: 30rem;
+    height: 4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid ${theme.colors.blackColor};
+  `}
+`;
+
+export const Button = styled.input`
   ${({ theme }) => css`
     cursor: pointer;
     width: 30rem;
