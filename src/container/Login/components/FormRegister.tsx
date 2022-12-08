@@ -1,29 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { api } from '../../../lib/api';
-import RegisterSchema from '../../../utils/registerSchema';
+import formSchema from '../../../utils/formSchema';
 import * as Styled from '../styles';
 
 export type FormRegisterProps = {
   children: React.ReactNode;
 };
 
+const emailTest = [
+  'email@email.com',
+  'lucal@gmail.com',
+  'lucal22@gmail.com',
+  'lucal222@gmail.com',
+  'lucalgamer@gmail.com',
+];
+
 export default function FormRegister() {
+  const [used, setUsed] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(RegisterSchema),
+    resolver: yupResolver(formSchema),
   });
 
-  function onSubmit(data: FieldValues) {
-    console.log(data);
-    // await api.post('/accounts', {
-    //   email: formCreate.email,
-    //   password: formCreate.password,
-    // });
+  async function onSubmit(data: FieldValues) {
+    if (emailTest.find((e) => e === data.email)) {
+      return setUsed(true);
+    } else {
+      setUsed(false);
+      // await api.post('/accounts', {
+      //   email: data.email,
+      //   password: data.password,
+      // });
+      console.log('Dados enviados com sucesso');
+    }
   }
   return (
     <Styled.CreateAccount>
@@ -35,7 +50,10 @@ export default function FormRegister() {
             type={'email'}
             placeholder={'email@email.com'}
           />
-          <span>{errors.email?.message}</span>
+          <p>
+            {errors.email?.message}
+            {used ? 'Email informado já foi utilizado' : null}
+          </p>
         </Styled.FormField>
         <Styled.FormField>
           <Styled.Input
@@ -43,7 +61,7 @@ export default function FormRegister() {
             type={'password'}
             placeholder={'senha'}
           />
-          <span>{errors.password?.message}</span>
+          <p>{errors.password?.message}</p>
         </Styled.FormField>
         <Styled.Button type="submit" value={'CRIAR CONTA'} />
       </Styled.Form>

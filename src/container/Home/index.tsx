@@ -8,7 +8,7 @@ export type HomeProps = {
 export default function Home() {
   return (
     <Styled.Container>
-      <h1></h1>
+      <h1>Olá mundo</h1>
     </Styled.Container>
   );
 }

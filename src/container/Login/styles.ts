@@ -45,7 +45,11 @@ export const Form = styled.form`
 `;
 
 export const FormField = styled.div`
+  position: relative;
   padding-bottom: 2rem;
+  p {
+    position: absolute;
+  }
 `;
 
 export const Input = styled.input`
