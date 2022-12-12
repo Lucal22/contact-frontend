@@ -1,14 +1,18 @@
-import React from 'react';
-import * as Styled from './styles';
+import Container from '../../components/Container';
+import Logo from './components/Logo';
+import Menu from './components/Menu';
+import Nav from './components/Nav';
 
-export type HeaderProps = {
-  children: React.ReactNode;
-};
+import * as Styled from './styles';
 
 export default function Header() {
   return (
-    <Styled.Container>
-      <h1></h1>
-    </Styled.Container>
+    <Styled.Header>
+      <Container height={'100'}>
+        <Logo />
+        <Nav />
+        <Menu />
+      </Container>
+    </Styled.Header>
   );
 }

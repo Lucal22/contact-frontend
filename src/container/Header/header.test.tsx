@@ -1,10 +1,9 @@
-import { screen } from '@testing-library/react';
 import { renderTheme } from '../../utils/renderTheme';
 import Header from './index';
 
 describe('<Header />', () => {
   it('should render', () => {
-    renderTheme(<Header />);
-    expect(screen.getByRole('heading')).toBeInTheDocument;
+    const header = renderTheme(<Header />);
+    expect(header).toMatchSnapshot;
   });
 });
