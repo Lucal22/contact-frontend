@@ -2,20 +2,12 @@ import React, { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import formSchema from '../../../utils/formSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { api } from '../../../lib/api';
 import * as Styled from '../styles';
+import loginRequest from '../../../utils/loginRequest';
 
 export type FormLoginProps = {
   children: React.ReactNode;
 };
-
-const emailTest = [
-  'email@email.com',
-  'lucal@gmail.com',
-  'lucal22@gmail.com',
-  'lucal222@gmail.com',
-  'lucalgamer@gmail.com',
-];
 
 export default function FormLogin() {
   const [noUser, setNoUser] = useState(false);
@@ -28,16 +20,13 @@ export default function FormLogin() {
   });
 
   async function onSubmit(data: FieldValues) {
-    if (emailTest.find((e) => e === data.email)) {
-      // return emailTest.filter((e) => e === data.email);
-      // await api.get('/accounts', {
-      //   email: data.email,
-      //   password: data.password,
-      // });
-      console.log(data.email);
-    } else {
-      return setNoUser(true);
-    }
+    loginRequest(data.email, data.password);
+    // if (emailTest.find((e) => e === data.email)) {
+    //    return emailTest.filter((e) => e === data.email);
+    //   console.log(data.email);
+    // } else {
+    //   return setNoUser(true);
+    // }
   }
 
   return (

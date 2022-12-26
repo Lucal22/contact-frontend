@@ -4,18 +4,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { api } from '../../../lib/api';
 import formSchema from '../../../utils/formSchema';
 import * as Styled from '../styles';
+import axios from 'axios';
 
 export type FormRegisterProps = {
   children: React.ReactNode;
 };
-
-const emailTest = [
-  'email@email.com',
-  'lucal@gmail.com',
-  'lucal22@gmail.com',
-  'lucal222@gmail.com',
-  'lucalgamer@gmail.com',
-];
 
 export default function FormRegister() {
   const [used, setUsed] = useState(false);
@@ -29,17 +22,19 @@ export default function FormRegister() {
   });
 
   async function onSubmit(data: FieldValues) {
-    if (emailTest.find((e) => e === data.email)) {
-      return setUsed(true);
-    } else {
-      setUsed(false);
-      // await api.post('/accounts', {
-      //   email: data.email,
-      //   password: data.password,
-      // });
-      console.log('Dados enviados com sucesso');
-    }
+    const isRegistered = await axios.get('http://localhost:3333/accounts');
+    console.log(isRegistered);
   }
+  // if (emailTest.find((e) => e === data.email)) {
+  //   return setUsed(true);
+  // } else {
+  //   setUsed(false);
+  //   // await api.post('/accounts', {
+  //   //   email: data.email,
+  //   //   password: data.password,
+  //   // });
+  //   console.log('Dados enviados com sucesso');
+  // }
   return (
     <Styled.CreateAccount>
       <h1>{'Criar conta'}</h1>
