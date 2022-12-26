@@ -20,7 +20,8 @@ export default function FormLogin() {
   });
 
   async function onSubmit(data: FieldValues) {
-    loginRequest(data.email, data.password);
+    const user = await loginRequest(data.email, data.password);
+    user ? console.log(user) : console.log('user vazio');
     // if (emailTest.find((e) => e === data.email)) {
     //    return emailTest.filter((e) => e === data.email);
     //   console.log(data.email);
