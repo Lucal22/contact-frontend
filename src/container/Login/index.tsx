@@ -11,7 +11,6 @@ export default function Login() {
   // const { isLoading, data } = useQuery('products', () => {
   //   return axios.get(`${api}/getProducts`);
   // });
-
   return (
     <Styled.Container>
       <Container height={'full'}>

@@ -22,8 +22,8 @@ export default function FormRegister() {
   });
 
   async function onSubmit(data: FieldValues) {
-    const isRegistered = await axios.get('http://localhost:3333/accounts');
-    console.log(isRegistered);
+    //const user = await loginRequest(data.email, data.password);
+    //user ? console.log(user) : console.log('user vazio');
   }
   // if (emailTest.find((e) => e === data.email)) {
   //   return setUsed(true);
