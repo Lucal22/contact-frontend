@@ -3,13 +3,16 @@ import { FieldValues, useForm } from 'react-hook-form';
 import formSchema from '../../../utils/formSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Styled from '../styles';
-import loginRequest from '../../../utils/loginRequest';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../../context/AuthProvider/useAuth';
 
 export type FormLoginProps = {
   children: React.ReactNode;
 };
 
 export default function FormLogin() {
+  const auth = useAuth();
+  const navigate = useNavigate();
   const [noUser, setNoUser] = useState(false);
   const {
     register,
@@ -20,14 +23,12 @@ export default function FormLogin() {
   });
 
   async function onSubmit(data: FieldValues) {
-    const user = await loginRequest(data.email, data.password);
-    user ? console.log(user) : console.log('user vazio');
-    // if (emailTest.find((e) => e === data.email)) {
-    //    return emailTest.filter((e) => e === data.email);
-    //   console.log(data.email);
-    // } else {
-    //   return setNoUser(true);
-    // }
+    try {
+      await auth?.authenticate(data.email, data.password);
+      navigate('/contacts');
+    } catch (e) {
+      console.log('erro');
+    }
   }
 
   return (

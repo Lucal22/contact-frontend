@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { api } from '../../../lib/api';
 import formSchema from '../../../utils/formSchema';
 import * as Styled from '../styles';
-import axios from 'axios';
 
 export type FormRegisterProps = {
   children: React.ReactNode;
