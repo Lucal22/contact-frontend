@@ -25,7 +25,7 @@ export default function FormLogin() {
   async function onSubmit(data: FieldValues) {
     try {
       await auth?.authenticate(data.email, data.password);
-      navigate('/contacts');
+      navigate('/login/contacts');
     } catch (e) {
       setFormData(true);
       console.log('erro');

@@ -8,6 +8,9 @@ export const Nav = styled.nav`
       margin: 0 auto;
       width: 50%;
       height: 8rem;
+      h1 {
+        cursor: pointer;
+      }
     } ;
   `}
 `;
