@@ -13,7 +13,7 @@ export type FormLoginProps = {
 export default function FormLogin() {
   const auth = useAuth();
   const navigate = useNavigate();
-  const [noUser, setNoUser] = useState(false);
+  const [formData, setFormData] = useState(false);
   const {
     register,
     handleSubmit,
@@ -27,6 +27,7 @@ export default function FormLogin() {
       await auth?.authenticate(data.email, data.password);
       navigate('/contacts');
     } catch (e) {
+      setFormData(true);
       console.log('erro');
     }
   }
@@ -43,7 +44,7 @@ export default function FormLogin() {
           />
           <p>
             {errors.email?.message}
-            {noUser ? 'email ou senha incorretos' : null}
+            {formData ? '  email ou senha incorretos' : null}
           </p>
         </Styled.FormField>
         <Styled.FormField>

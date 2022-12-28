@@ -1,6 +1,6 @@
 export type IUser = {
   email?: string;
-  id?: string;
+  token?: string;
 };
 
 export type IContext = IUser & {
