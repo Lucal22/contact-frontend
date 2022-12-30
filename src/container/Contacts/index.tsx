@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as Styled from './styles';
 import ProtectedLayout from '../../components/ProtectedLayout';
 import Container from '../../components/Container';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import contactSchema from '../../utils/contactSchema';
-import { api } from '../../lib/api';
 import useAuth from '../../context/AuthProvider/useAuth';
-
-export type ContactsProps = {
-  children: React.ReactNode;
-};
+import { IContacts } from '../../context/AuthProvider/interface';
+import { contactCreate, contactRequest } from '../../utils/contactRequest';
 
 export default function Contacts() {
-  const [sending, setSending] = useState(false);
   const auth = useAuth();
-  console.log(auth);
+  const [contacts, setContacts] = useState<[IContacts] | []>([]);
+  const [sending, setSending] = useState(false);
   const {
     register,
     handleSubmit,
@@ -25,19 +22,23 @@ export default function Contacts() {
   });
 
   async function addContact(data: FieldValues) {
-    console.log('cheguei aqui');
     setSending(true);
     try {
-      await api.post('/login/contacts/create', {
-        email: auth?.email,
-        name: data.name,
-        phone: data.phone,
+      await contactCreate(auth?.email, data.name, data.phone);
+      setContacts((prevContacts) => {
+        return { ...prevContacts, data };
       });
       setSending(false);
     } catch (e) {
       console.log(e);
     }
   }
+
+  async function loadContacts() {
+    const contacts = await contactRequest(auth?.email);
+    setContacts(contacts);
+  }
+
   return (
     <ProtectedLayout>
       <Styled.Container>
@@ -60,7 +61,7 @@ export default function Contacts() {
             <input
               {...register('phone')}
               type={'text'}
-              placeholder={'Ex: 912345678'}
+              placeholder={'Ex: 021912345678'}
             />
             <p>{errors.phone?.message}</p>
             <Styled.AddButton
@@ -70,6 +71,10 @@ export default function Contacts() {
               value={sending ? 'Aguarde' : 'Adicionar'}
             />
           </Styled.NewContact>
+          <button onClick={() => loadContacts()}>Carregar contatos</button>
+          {Object.entries(contacts).map((item) => {
+            return <p key={item[1].name}>{item[1].name}</p>;
+          })}
         </Container>
       </Styled.Container>
     </ProtectedLayout>
