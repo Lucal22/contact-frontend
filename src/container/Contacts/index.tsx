@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as Styled from './styles';
 import ProtectedLayout from '../../components/ProtectedLayout';
 import Container from '../../components/Container';
@@ -8,6 +8,7 @@ import contactSchema from '../../utils/contactSchema';
 import useAuth from '../../context/AuthProvider/useAuth';
 import { IContacts } from '../../context/AuthProvider/interface';
 import { contactCreate, contactRequest } from '../../utils/contactRequest';
+import ContactsCard from './components/ContactsCard';
 
 export default function Contacts() {
   const auth = useAuth();
@@ -52,18 +53,23 @@ export default function Contacts() {
             </p>
           </Styled.Description>
           <Styled.NewContact onSubmit={handleSubmit(addContact)}>
-            <input
-              {...register('name')}
-              type={'text'}
-              placeholder={'Ex: Luís Carlos'}
-            />
-            <p>{errors.name?.message}</p>
-            <input
-              {...register('phone')}
-              type={'text'}
-              placeholder={'Ex: 021912345678'}
-            />
-            <p>{errors.phone?.message}</p>
+            <Styled.FormField>
+              <input
+                {...register('name')}
+                type={'text'}
+                placeholder={'Ex: Luís Carlos'}
+              />
+              <p>{errors.name?.message}</p>
+            </Styled.FormField>
+            <Styled.FormField>
+              <input
+                {...register('phone')}
+                type={'text'}
+                placeholder={'Ex: 021912345678'}
+              />
+              <p>{errors.phone?.message}</p>
+            </Styled.FormField>
+
             <Styled.AddButton
               sending={sending}
               type="submit"
@@ -71,10 +77,24 @@ export default function Contacts() {
               value={sending ? 'Aguarde' : 'Adicionar'}
             />
           </Styled.NewContact>
-          <button onClick={() => loadContacts()}>Carregar contatos</button>
-          {Object.entries(contacts).map((item) => {
-            return <p key={item[1].name}>{item[1].name}</p>;
-          })}
+          <Styled.ContactList>
+            <Styled.LoadContacts onClick={() => loadContacts()}>
+              Carregar contatos
+            </Styled.LoadContacts>
+            <Styled.Contacts>
+              {Object.entries(contacts).map((item) => {
+                return (
+                  <ContactsCard
+                    key={item[1].name}
+                    id={item[1].id}
+                    name={item[1].name}
+                    phone={item[1].phone}
+                    loadContacts={loadContacts}
+                  />
+                );
+              })}
+            </Styled.Contacts>
+          </Styled.ContactList>
         </Container>
       </Styled.Container>
     </ProtectedLayout>

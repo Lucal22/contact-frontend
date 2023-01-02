@@ -31,3 +31,22 @@ export async function contactCreate(
   }
   return;
 }
+
+export async function contactUpdate(
+  id: string | undefined,
+  name: string | undefined,
+  phone: string | undefined,
+) {
+  if (id && name && phone) {
+    try {
+      await api.post('/login/contacts/update', {
+        id,
+        name,
+        phone,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  return;
+}

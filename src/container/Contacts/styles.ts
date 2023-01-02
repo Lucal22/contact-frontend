@@ -7,7 +7,6 @@ type ContactsStyleProps = {
 export const Container = styled.div`
   ${({ theme }) => css`
     padding-top: 15rem;
-    text-align: center;
     color: ${theme.colors.blackColor};
     @media (min-width: ${theme.screen.size.large}) {
       padding-top: 20rem;
@@ -17,6 +16,8 @@ export const Container = styled.div`
 
 export const Description = styled.div`
   ${({ theme }) => css`
+    text-align: center;
+
     p {
       padding: 1rem 0 3rem 0;
       font-size: ${theme.fonts.size.small};
@@ -27,6 +28,7 @@ export const Description = styled.div`
 export const NewContact = styled.form`
   ${({ theme }) => css`
     display: block;
+    position: relative;
     input {
       width: 100%;
       height: 4rem;
@@ -42,6 +44,13 @@ export const NewContact = styled.form`
     }
   `}
 `;
+export const FormField = styled.div`
+  position: relative;
+  p {
+    position: absolute;
+    top: 4rem;
+  }
+`;
 
 export const AddButton = styled.input<ContactsStyleProps>`
   ${({ theme, sending }) => css`
@@ -55,5 +64,144 @@ export const AddButton = styled.input<ContactsStyleProps>`
     background-color: ${sending
       ? theme.colors.grayColor
       : theme.colors.blueColor};
+  `}
+`;
+
+export const ContactList = styled.div`
+  display: block;
+  position: relative;
+`;
+
+export const LoadContacts = styled.button`
+  position: absolute;
+  right: 0;
+`;
+
+export const Contacts = styled.div`
+  padding-top: 3rem;
+`;
+
+//CARD
+
+export const Card = styled.div`
+  ${({ theme }) => css`
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 4.2rem;
+    gap: 0.5rem;
+    p {
+      font-size: ${theme.fonts.size.medium};
+    }
+    @media (min-width: ${theme.screen.size.small}) {
+      gap: 5rem;
+    }
+  `}
+`;
+
+export const Name = styled.p`
+  min-width: 15rem;
+`;
+
+export const Phone = styled.p`
+  ${({ theme }) => css`
+    min-width: 12rem;
+    @media (min-width: ${theme.screen.size.small}) {
+      text-align: center;
+    }
+  `}
+`;
+
+export const EditButton = styled.button`
+  position: absolute;
+  right: 3.2rem;
+  background: none;
+`;
+
+export const DeleteButton = styled.button`
+  position: absolute;
+  right: 0;
+  background: none;
+`;
+
+//EDIT CARD
+
+export const Edit = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    position: absolute;
+    top: -25rem;
+    z-index: 1;
+    margin: auto;
+    width: 100%;
+  `}
+`;
+
+export const EditContent = styled.div`
+  ${({ theme }) => css`
+    width: 30rem;
+    height: 30rem;
+    margin: 0 auto;
+    box-shadow: 1px 1px 1px 1px black;
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+
+    p {
+      padding: 1rem 0 3rem 0;
+      font-size: ${theme.fonts.size.small};
+    }
+  `}
+`;
+
+export const EditForm = styled.form`
+  ${({ theme }) => css`
+    input {
+      width: 26rem;
+      height: 3.5rem;
+      margin-bottom: 1.5rem;
+      padding: 0 0.5rem;
+      font-size: ${theme.fonts.size.medium};
+    }
+  `}
+`;
+
+export const EditFormField = styled.div`
+  ${({ theme }) => css`
+    position: relative;
+    p {
+      position: absolute;
+      top: 50%;
+      font-size: 1rem;
+      text-align: center;
+    }
+  `}
+`;
+
+export const EditInput = styled.input`
+  ${({ theme }) => css``}
+`;
+
+export const EditSubmitButton = styled.input`
+  ${({ theme }) => css`
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: ${theme.colors.whiteColor};
+    background-color: ${theme.colors.blueColor};
+  `}
+`;
+
+export const EditCancelButton = styled.input`
+  ${({ theme }) => css`
+    border: none;
+    border-radius: 0.5rem;
+    color: ${theme.colors.whiteColor};
+    background-color: ${theme.colors.grayColor};
   `}
 `;
