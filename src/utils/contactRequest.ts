@@ -50,3 +50,15 @@ export async function contactUpdate(
   }
   return;
 }
+
+export async function contactDelete(id: string | undefined) {
+  if (id) {
+    try {
+      await api.post('/login/contacts/delete', {
+        id,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+}

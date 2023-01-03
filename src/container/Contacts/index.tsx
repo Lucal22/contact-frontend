@@ -26,9 +26,7 @@ export default function Contacts() {
     setSending(true);
     try {
       await contactCreate(auth?.email, data.name, data.phone);
-      setContacts((prevContacts) => {
-        return { ...prevContacts, data };
-      });
+      await loadContacts();
       setSending(false);
     } catch (e) {
       console.log(e);
@@ -85,7 +83,7 @@ export default function Contacts() {
               {Object.entries(contacts).map((item) => {
                 return (
                   <ContactsCard
-                    key={item[1].name}
+                    key={item[1].id}
                     id={item[1].id}
                     name={item[1].name}
                     phone={item[1].phone}

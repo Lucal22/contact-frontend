@@ -2,6 +2,7 @@ import * as Styled from '../styles';
 import { FiTrash2, FiEdit } from 'react-icons/fi';
 import ContactsEdit from './ContactsEdit';
 import { useState } from 'react';
+import { contactDelete } from '../../../utils/contactRequest';
 
 export type ContactsCardProps = {
   id: string | undefined;
@@ -17,21 +18,26 @@ export default function ContactsCard({
   loadContacts,
 }: ContactsCardProps) {
   const [edit, setEdit] = useState(false);
+  const [onDelete, setOnDelete] = useState(false);
 
-  function openEdit() {
-    setEdit(true);
-  }
   function closeEdit() {
     setEdit(false);
+  }
+
+  async function deleteContact() {
+    setOnDelete(true);
+    await contactDelete(id);
+    loadContacts();
+    setOnDelete(false);
   }
   return (
     <Styled.Card>
       <Styled.Name>{name}</Styled.Name>
       <Styled.Phone>{phone}</Styled.Phone>
-      <Styled.EditButton onClick={() => openEdit()}>
+      <Styled.EditButton disabled={onDelete} onClick={() => setEdit(true)}>
         <FiEdit size={25} />
       </Styled.EditButton>
-      <Styled.DeleteButton>
+      <Styled.DeleteButton disabled={onDelete} onClick={() => deleteContact()}>
         <FiTrash2 size={25} />
       </Styled.DeleteButton>
       {edit ? (
