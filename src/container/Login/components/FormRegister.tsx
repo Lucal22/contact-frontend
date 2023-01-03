@@ -3,6 +3,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import formSchema from '../../../utils/formSchema';
 import * as Styled from '../styles';
+import { registerRequest, verifyEmail } from '../../../utils/registerRequest';
 
 export type FormRegisterProps = {
   children: React.ReactNode;
@@ -10,6 +11,7 @@ export type FormRegisterProps = {
 
 export default function FormRegister() {
   const [used, setUsed] = useState(false);
+  const [submit, setSubmit] = useState(false);
 
   const {
     register,
@@ -20,19 +22,18 @@ export default function FormRegister() {
   });
 
   async function onSubmit(data: FieldValues) {
-    //const user = await loginRequest(data.email, data.password);
-    //user ? console.log(user) : console.log('user vazio');
+    setSubmit(true);
+    const checkEmail = await verifyEmail(data.email);
+    if (checkEmail) {
+      setSubmit(false);
+      setUsed(true);
+      return;
+    }
+    await registerRequest(data.email, data.password);
+    setSubmit(false);
+    alert('Conta criada com sucesso');
   }
-  // if (emailTest.find((e) => e === data.email)) {
-  //   return setUsed(true);
-  // } else {
-  //   setUsed(false);
-  //   // await api.post('/accounts', {
-  //   //   email: data.email,
-  //   //   password: data.password,
-  //   // });
-  //   console.log('Dados enviados com sucesso');
-  // }
+
   return (
     <Styled.CreateAccount>
       <h1>{'Criar conta'}</h1>
@@ -56,7 +57,11 @@ export default function FormRegister() {
           />
           <p>{errors.password?.message}</p>
         </Styled.FormField>
-        <Styled.Button type="submit" value={'CRIAR CONTA'} />
+        <Styled.Button
+          disabled={submit}
+          type="submit"
+          value={submit ? 'AGUARDE' : 'CRIAR CONTA'}
+        />
       </Styled.Form>
     </Styled.CreateAccount>
   );

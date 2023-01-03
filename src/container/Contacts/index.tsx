@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import * as Styled from './styles';
-import ProtectedLayout from '../../components/ProtectedLayout';
 import Container from '../../components/Container';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -39,62 +38,64 @@ export default function Contacts() {
   }
 
   return (
-    <ProtectedLayout>
-      <Styled.Container>
-        <Container height="full">
-          <Styled.Description>
-            <h1>LISTA DE CONTATOS</h1>
-            <p>
-              Adicione, edite e exclua contatos da sua agenda. Utilize nomes e
-              números diferentes para não acabar enviando aquela mensagem para o
-              contatinho errado.
-            </p>
-          </Styled.Description>
-          <Styled.NewContact onSubmit={handleSubmit(addContact)}>
-            <Styled.FormField>
-              <input
-                {...register('name')}
-                type={'text'}
-                placeholder={'Ex: Luís Carlos'}
-              />
-              <p>{errors.name?.message}</p>
-            </Styled.FormField>
-            <Styled.FormField>
-              <input
-                {...register('phone')}
-                type={'text'}
-                placeholder={'Ex: 021912345678'}
-              />
-              <p>{errors.phone?.message}</p>
-            </Styled.FormField>
+    <Styled.Container>
+      <Container height="full">
+        {auth?.token ? (
+          <>
+            <Styled.Description>
+              <h1>LISTA DE CONTATOS</h1>
+              <p>
+                Adicione, edite e exclua contatos da sua agenda. Utilize nomes e
+                números diferentes para não acabar enviando aquela mensagem para
+                o contatinho errado.
+              </p>
+            </Styled.Description>
+            <Styled.NewContact onSubmit={handleSubmit(addContact)}>
+              <Styled.FormField>
+                <input
+                  {...register('name')}
+                  type={'text'}
+                  placeholder={'Ex: Luís Carlos'}
+                />
+                <p>{errors.name?.message}</p>
+              </Styled.FormField>
+              <Styled.FormField>
+                <input
+                  {...register('phone')}
+                  type={'text'}
+                  placeholder={'Ex: 021912345678'}
+                />
+                <p>{errors.phone?.message}</p>
+              </Styled.FormField>
 
-            <Styled.AddButton
-              sending={sending}
-              type="submit"
-              disabled={sending}
-              value={sending ? 'Aguarde' : 'Adicionar'}
-            />
-          </Styled.NewContact>
-          <Styled.ContactList>
-            <Styled.LoadContacts onClick={() => loadContacts()}>
-              Carregar contatos
-            </Styled.LoadContacts>
-            <Styled.Contacts>
-              {Object.entries(contacts).map((item) => {
-                return (
-                  <ContactsCard
-                    key={item[1].id}
-                    id={item[1].id}
-                    name={item[1].name}
-                    phone={item[1].phone}
-                    loadContacts={loadContacts}
-                  />
-                );
-              })}
-            </Styled.Contacts>
-          </Styled.ContactList>
-        </Container>
-      </Styled.Container>
-    </ProtectedLayout>
+              <Styled.AddButton
+                sending={sending}
+                type="submit"
+                disabled={sending}
+                value={sending ? 'Aguarde' : 'Adicionar'}
+              />
+            </Styled.NewContact>
+            <Styled.ContactList>
+              <Styled.LoadContacts onClick={() => loadContacts()}>
+                Carregar contatos
+              </Styled.LoadContacts>
+              <Styled.Contacts>
+                {Object.entries(contacts).map((item) => {
+                  return (
+                    <ContactsCard
+                      key={item[1].id}
+                      id={item[1].id}
+                      name={item[1].name}
+                      phone={item[1].phone}
+                      loadContacts={loadContacts}
+                    />
+                  );
+                })}
+              </Styled.Contacts>
+            </Styled.ContactList>
+          </>
+        ) : null}
+      </Container>
+    </Styled.Container>
   );
 }

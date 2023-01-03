@@ -22,6 +22,16 @@ export const Description = styled.div`
       padding: 1rem 0 3rem 0;
       font-size: ${theme.fonts.size.small};
     }
+    @media (min-width: ${theme.screen.size.medium}) {
+      p {
+        font-size: ${theme.fonts.size.medium};
+      }
+    }
+    @media (min-width: ${theme.screen.size.large}) {
+      p {
+        font-size: ${theme.fonts.size.big};
+      }
+    }
   `}
 `;
 
@@ -41,6 +51,13 @@ export const NewContact = styled.form`
       display: flex;
       justify-content: center;
       gap: 3rem;
+      input {
+        width: 40rem;
+        height: 4rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+        font-size: ${theme.fonts.size.medium};
+      }
     }
   `}
 `;
@@ -73,6 +90,7 @@ export const ContactList = styled.div`
 `;
 
 export const LoadContacts = styled.button`
+  cursor: pointer;
   position: absolute;
   right: 0;
 `;
@@ -99,16 +117,27 @@ export const Card = styled.div`
     @media (min-width: ${theme.screen.size.small}) {
       gap: 5rem;
     }
+    @media (min-width: ${theme.screen.size.medium}) {
+      p {
+        font-size: ${theme.fonts.size.big};
+      }
+    }
   `}
 `;
 
 export const Name = styled.p`
-  min-width: 15rem;
+  ${({ theme }) => css`
+    min-width: 15rem;
+
+    @media (min-width: ${theme.screen.size.medium}) {
+      min-width: 25rem;
+    }
+  `}
 `;
 
 export const Phone = styled.p`
   ${({ theme }) => css`
-    min-width: 12rem;
+    width: 100%;
     @media (min-width: ${theme.screen.size.small}) {
       text-align: center;
     }
@@ -119,12 +148,14 @@ export const EditButton = styled.button`
   position: absolute;
   right: 3.2rem;
   background: none;
+  cursor: pointer;
 `;
 
 export const DeleteButton = styled.button`
   position: absolute;
   right: 0;
   background: none;
+  cursor: pointer;
 `;
 
 //EDIT CARD
