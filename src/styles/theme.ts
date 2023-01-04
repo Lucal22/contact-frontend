@@ -29,7 +29,7 @@ export const theme = {
       small: '1.6rem',
       medium: '1.8rem',
       big: '2rem',
-      xBig: '3.2rem',
+      xBig: '3rem',
       large: '4rem',
     },
   },

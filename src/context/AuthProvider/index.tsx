@@ -27,6 +27,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       }
     }
     validation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function authenticate(email: string, password: string) {

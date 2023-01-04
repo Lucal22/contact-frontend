@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const Nav = styled.nav`
   ${({ theme }) => css`
     display: none;
+    position: relative;
     @media (min-width: ${theme.screen.size.medium}) {
       display: block;
       margin: 0 auto;
@@ -35,5 +36,15 @@ export const Item = styled.li`
       color: ${theme.colors.blackColor};
       transition: all 0.3s ease-in-out;
     }
+  `}
+`;
+
+export const Logout = styled.p`
+  ${({ theme }) => css`
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    font-size: ${theme.fonts.size.small};
+    color: red;
   `}
 `;

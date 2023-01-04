@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 export default function Login() {
   const auth = useAuth();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (auth?.token) {
       navigate('/login/contacts');

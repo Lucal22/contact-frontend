@@ -69,3 +69,12 @@ export const Nav = styled.nav`
 export const MenuItens = styled.div`
   padding: 1rem;
 `;
+
+export const Logout = styled.p`
+  ${({ theme }) => css`
+    padding: 10px;
+    cursor: pointer;
+    font-size: ${theme.fonts.size.medium};
+    color: red;
+  `}
+`;

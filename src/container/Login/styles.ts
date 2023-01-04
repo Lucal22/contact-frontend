@@ -12,6 +12,11 @@ export const Container = styled.div`
       color: ${theme.colors.blackColor};
       font-size: ${theme.fonts.size.big};
     }
+    @media (min-width: ${theme.screen.size.large}) {
+      h1 {
+        font-size: ${theme.fonts.size.xBig};
+      }
+    }
   `}
 `;
 
@@ -63,6 +68,11 @@ export const Input = styled.input`
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     border: 1px solid ${theme.colors.blackColor};
+
+    @media (min-width: ${theme.screen.size.large}) {
+      width: 40rem;
+      font-size: ${theme.fonts.size.medium};
+    } ;
   `}
 `;
 
@@ -77,5 +87,8 @@ export const Button = styled.input<LoginStyleProps>`
     background-color: ${creating
       ? theme.colors.grayColor
       : theme.colors.blueColor};
+    @media (min-width: ${theme.screen.size.large}) {
+      width: 40rem;
+    } ;
   `}
 `;

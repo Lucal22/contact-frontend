@@ -14,6 +14,7 @@ export default function FormLogin() {
   const auth = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const {
     register,
     handleSubmit,
@@ -23,8 +24,10 @@ export default function FormLogin() {
   });
 
   async function onSubmit(data: FieldValues) {
+    setIsSending(true);
     try {
       await auth?.authenticate(data.email, data.password);
+      setIsSending(false);
       navigate('/login/contacts');
     } catch (e) {
       setFormData(true);
@@ -55,7 +58,7 @@ export default function FormLogin() {
           />
           <p>{errors.password?.message}</p>
         </Styled.FormField>
-        <Styled.Button type="submit" value={'ENTRAR'} />
+        <Styled.Button creating={isSending} type="submit" value={'ENTRAR'} />
       </Styled.Form>
     </Styled.Login>
   );
