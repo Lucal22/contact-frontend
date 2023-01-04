@@ -25,8 +25,8 @@ export default function FormRegister() {
     setSubmit(true);
     const checkEmail = await verifyEmail(data.email);
     if (checkEmail) {
-      setSubmit(false);
       setUsed(true);
+      setSubmit(false);
       return;
     }
     await registerRequest(data.email, data.password);
@@ -58,6 +58,7 @@ export default function FormRegister() {
           <p>{errors.password?.message}</p>
         </Styled.FormField>
         <Styled.Button
+          creating={submit}
           disabled={submit}
           type="submit"
           value={submit ? 'AGUARDE' : 'CRIAR CONTA'}

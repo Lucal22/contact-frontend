@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+type LoginStyleProps = {
+  creating: boolean;
+};
+
 export const Container = styled.div`
   ${({ theme }) => css`
     h1 {
@@ -62,14 +66,16 @@ export const Input = styled.input`
   `}
 `;
 
-export const Button = styled.input`
-  ${({ theme }) => css`
+export const Button = styled.input<LoginStyleProps>`
+  ${({ theme, creating }) => css`
     cursor: pointer;
     width: 30rem;
     height: 4rem;
     border: none;
     border-radius: 0.5rem;
     color: ${theme.colors.whiteColor};
-    background-color: ${theme.colors.blueColor};
+    background-color: ${creating
+      ? theme.colors.grayColor
+      : theme.colors.blueColor};
   `}
 `;

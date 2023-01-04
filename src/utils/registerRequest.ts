@@ -1,10 +1,17 @@
 import { api } from '../lib/api';
 
+type registerRequestType = {
+  email: string;
+};
+
 export async function verifyEmail(ValidateEmail: string) {
   const emails = await api.get('/getEmails');
-  console.log(emails.data[0]);
 
-  if (emails.data.find((e: string) => e.split)) {
+  const filterEmails = emails.data.filter((e: registerRequestType) =>
+    e.email.includes(ValidateEmail),
+  );
+
+  if (filterEmails.length > 0) {
     return true;
   }
   return false;
