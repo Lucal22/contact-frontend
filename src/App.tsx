@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Login from './container/Login';
-import Home from './container/Header';
+import Home from './container/Home';
 import Header from './container/Header';
 import AuthProvider from './context/AuthProvider';
 import Contacts from './container/Contacts';
