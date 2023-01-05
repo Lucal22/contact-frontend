@@ -11,6 +11,7 @@ import ContactsCard from './components/ContactsCard';
 
 export default function Contacts() {
   const auth = useAuth();
+
   const [contacts, setContacts] = useState<[IContacts] | []>([]);
   const [sending, setSending] = useState(false);
   const {
@@ -94,7 +95,9 @@ export default function Contacts() {
               </Styled.Contacts>
             </Styled.ContactList>
           </>
-        ) : null}
+        ) : (
+          <p>É necessário fazer login para visualizar os contatos</p>
+        )}
       </Container>
     </Styled.Container>
   );

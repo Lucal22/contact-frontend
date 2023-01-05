@@ -12,7 +12,7 @@ export const Container = styled.div`
       color: ${theme.colors.blackColor};
       font-size: ${theme.fonts.size.big};
     }
-    @media (min-width: ${theme.screen.size.large}) {
+    @media (min-width: ${theme.screen.size.medium}) {
       h1 {
         font-size: ${theme.fonts.size.xBig};
       }
@@ -20,16 +20,27 @@ export const Container = styled.div`
   `}
 `;
 
+export const Description = styled.div`
+  ${({ theme }) => css`
+    padding-top: 10rem;
+    p {
+      font-size: ${theme.fonts.size.medium};
+      padding-bottom: 2rem;
+    }
+    @media (min-width: ${theme.screen.size.large}) {
+      padding-top: 20rem;
+    }
+  `}
+`;
+
 export const Content = styled.div`
   display: flex;
-  padding-top: 10rem;
-
   flex-direction: column;
   align-items: center;
   gap: 3rem;
   ${({ theme }) => css`
     @media (min-width: ${theme.screen.size.medium}) {
-      padding-top: 20rem;
+      padding-top: 5rem;
       display: flex;
       flex-direction: row;
       align-items: center;
