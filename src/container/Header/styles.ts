@@ -13,3 +13,26 @@ export const Header = styled.header`
     box-shadow: 0px 4px 3px -2px rgba(0, 0, 0, 0.75);
   `}
 `;
+
+export const Logo = styled.div`
+  position: relative;
+  max-width: 120rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    cursor: pointer;
+    height: 4rem;
+  }
+`;
+
+export const Logout = styled.p`
+  ${({ theme }) => css`
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    font-size: ${theme.fonts.size.small};
+    color: red;
+  `}
+`;
