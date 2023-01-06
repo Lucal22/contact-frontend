@@ -6,6 +6,7 @@ export const Container = styled.div`
     height: 6vh;
     text-align: center;
     margin-top: 5rem;
+    margin-bottom: 1rem;
     color: ${theme.colors.grayColor};
     p {
       font-size: ${theme.fonts.size.small};
@@ -13,5 +14,8 @@ export const Container = styled.div`
     a {
       color: ${theme.colors.blueColor};
     }
+    @media (min-width: ${theme.screen.size.large}) {
+      margin: 0;
+    } ;
   `}
 `;
