@@ -58,7 +58,12 @@ export default function FormLogin() {
           />
           <p>{errors.password?.message}</p>
         </Styled.FormField>
-        <Styled.Button creating={isSending} type="submit" value={'ENTRAR'} />
+        <Styled.Button
+          aria-label="Entrar"
+          creating={isSending}
+          type="submit"
+          value={'ENTRAR'}
+        />
       </Styled.Form>
     </Styled.Login>
   );

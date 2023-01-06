@@ -70,6 +70,7 @@ export default function Contacts() {
               </Styled.FormField>
 
               <Styled.AddButton
+                aria-label="Adicionar contato"
                 sending={sending}
                 type="submit"
                 disabled={sending}

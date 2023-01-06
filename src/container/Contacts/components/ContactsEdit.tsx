@@ -57,11 +57,13 @@ export default function ContactsEdit({
           </Styled.EditFormField>
 
           <Styled.EditSubmitButton
+            aria-label="Salvar contato"
             disabled={disable}
             type={'submit'}
             value={disable ? 'Aguarde' : 'Salvar'}
           />
           <Styled.EditCancelButton
+            aria-label="Cancelar edição"
             disabled={disable}
             type={'button'}
             onClick={cancel}

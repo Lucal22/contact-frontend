@@ -58,6 +58,7 @@ export default function FormRegister() {
           <p>{errors.password?.message}</p>
         </Styled.FormField>
         <Styled.Button
+          aria-label="Criar conta"
           creating={submit}
           disabled={submit}
           type="submit"
