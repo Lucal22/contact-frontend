@@ -40,7 +40,7 @@ export default function Contacts() {
 
   return (
     <Styled.Container>
-      <Container height="full">
+      <Container height="100">
         {auth?.token ? (
           <>
             <Styled.Description>

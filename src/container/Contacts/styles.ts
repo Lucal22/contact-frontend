@@ -6,10 +6,11 @@ type ContactsStyleProps = {
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    padding-top: 15rem;
+    min-height: 94vh;
+    padding-top: 10rem;
     color: ${theme.colors.blackColor};
     @media (min-width: ${theme.screen.size.large}) {
-      padding-top: 20rem;
+      padding-top: 15rem;
     }
   `}
 `;
@@ -161,14 +162,12 @@ export const DeleteButton = styled.button`
 //EDIT CARD
 
 export const Edit = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    position: absolute;
-    top: -25rem;
-    z-index: 1;
-    margin: auto;
-    width: 100%;
-  `}
+  display: flex;
+  position: absolute;
+  top: -25rem;
+  z-index: 1;
+  margin: auto;
+  width: 100%;
 `;
 
 export const EditContent = styled.div`
@@ -203,20 +202,16 @@ export const EditForm = styled.form`
 `;
 
 export const EditFormField = styled.div`
-  ${({ theme }) => css`
-    position: relative;
-    p {
-      position: absolute;
-      top: 50%;
-      font-size: 1rem;
-      text-align: center;
-    }
-  `}
+  position: relative;
+  p {
+    position: absolute;
+    top: 50%;
+    font-size: 1rem;
+    text-align: center;
+  }
 `;
 
-export const EditInput = styled.input`
-  ${({ theme }) => css``}
-`;
+export const EditInput = styled.input``;
 
 export const EditSubmitButton = styled.input`
   ${({ theme }) => css`
