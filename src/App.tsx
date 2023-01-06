@@ -4,6 +4,7 @@ import Login from './container/Login';
 import Header from './container/Header';
 import AuthProvider from './context/AuthProvider';
 import Contacts from './container/Contacts';
+import Footer from './container/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login/contacts" element={<Contacts />} />
           <Route path="*" element={'PÁGINA NÃO EXISTE'} />
         </Routes>
+        <Footer />
       </Router>
     </AuthProvider>
   );

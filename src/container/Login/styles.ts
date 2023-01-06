@@ -6,6 +6,7 @@ type LoginStyleProps = {
 
 export const Container = styled.div`
   ${({ theme }) => css`
+    min-height: 95vh;
     h1 {
       text-align: center;
       padding-bottom: 1rem;
@@ -24,6 +25,7 @@ export const Description = styled.div`
   ${({ theme }) => css`
     padding-top: 10rem;
     p {
+      text-align: center;
       font-size: ${theme.fonts.size.medium};
       padding-bottom: 2rem;
     }
