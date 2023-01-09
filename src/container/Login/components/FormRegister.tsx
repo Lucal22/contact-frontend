@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import formSchema from '../../../utils/formSchema';
@@ -44,10 +44,8 @@ export default function FormRegister() {
             type={'email'}
             placeholder={'email@email.com'}
           />
-          <p>
-            {errors.email?.message}
-            {used ? 'Email informado já foi utilizado' : null}
-          </p>
+          <p>{errors.email?.message as ReactNode}</p>
+          <p> {used ? 'Email informado já foi utilizado' : null}</p>
         </Styled.FormField>
         <Styled.FormField>
           <Styled.Input
@@ -55,7 +53,7 @@ export default function FormRegister() {
             type={'password'}
             placeholder={'senha'}
           />
-          <p>{errors.password?.message}</p>
+          <p>{errors.password?.message as ReactNode}</p>
         </Styled.FormField>
         <Styled.Button
           aria-label="Criar conta"

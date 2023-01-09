@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import formSchema from '../../../utils/formSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Styled from '../styles';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../context/AuthProvider/useAuth';
-
-export type FormLoginProps = {
-  children: React.ReactNode;
-};
 
 export default function FormLogin() {
   const auth = useAuth();
@@ -45,10 +41,8 @@ export default function FormLogin() {
             type={'email'}
             placeholder={'email@email.com'}
           />
-          <p>
-            {errors.email?.message}
-            {formData ? '  email ou senha incorretos' : null}
-          </p>
+          <p>{errors.email?.message as ReactNode}</p>
+          <p> {formData ? '  email ou senha incorretos' : null}</p>
         </Styled.FormField>
         <Styled.FormField>
           <Styled.Input
@@ -56,7 +50,7 @@ export default function FormLogin() {
             type={'password'}
             placeholder={'senha'}
           />
-          <p>{errors.password?.message}</p>
+          <p>{errors.password?.message as ReactNode}</p>
         </Styled.FormField>
         <Styled.Button
           aria-label="Entrar"
