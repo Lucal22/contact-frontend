@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import * as Styled from './styles';
 import Container from '../../components/Container';
 import { FieldValues, useForm } from 'react-hook-form';
@@ -58,7 +58,7 @@ export default function Contacts() {
                   type={'text'}
                   placeholder={'Ex: Luís Carlos'}
                 />
-                <p>{errors.name?.message}</p>
+                <p>{errors.name?.message as ReactNode}</p>
               </Styled.FormField>
               <Styled.FormField>
                 <input
@@ -66,7 +66,7 @@ export default function Contacts() {
                   type={'text'}
                   placeholder={'Ex: 021912345678'}
                 />
-                <p>{errors.phone?.message}</p>
+                <p>{errors.phone?.message as ReactNode}</p>
               </Styled.FormField>
 
               <Styled.AddButton
