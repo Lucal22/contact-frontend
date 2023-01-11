@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { contactUpdate } from '../../../utils/contactRequest';
 import contactSchema from '../../../utils/contactSchema';
@@ -45,7 +45,7 @@ export default function ContactsEdit({
               {...register('name')}
               defaultValue={name}
             />
-            <p>{errors.name?.message}</p>
+            <p>{errors.name?.message as ReactNode}</p>
           </Styled.EditFormField>
           <Styled.EditFormField>
             <Styled.EditInput
@@ -53,7 +53,7 @@ export default function ContactsEdit({
               {...register('phone')}
               defaultValue={phone}
             />
-            <p>{errors.phone?.message}</p>{' '}
+            <p>{errors.phone?.message as ReactNode}</p>{' '}
           </Styled.EditFormField>
 
           <Styled.EditSubmitButton
