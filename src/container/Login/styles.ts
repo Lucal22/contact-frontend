@@ -48,7 +48,7 @@ export const Content = styled.div`
       align-items: center;
       justify-content: center;
       gap: 30px;
-    } ;
+    }
   `}
 `;
 
@@ -85,7 +85,7 @@ export const Input = styled.input`
     @media (min-width: ${theme.screen.size.large}) {
       width: 40rem;
       font-size: ${theme.fonts.size.medium};
-    } ;
+    }
   `}
 `;
 
@@ -102,6 +102,6 @@ export const Button = styled.input<LoginStyleProps>`
       : theme.colors.blueColor};
     @media (min-width: ${theme.screen.size.large}) {
       width: 40rem;
-    } ;
+    }
   `}
 `;

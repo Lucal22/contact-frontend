@@ -19,7 +19,7 @@ export default function Login() {
 
   return (
     <Styled.Container>
-      <Container height={'full'}>
+      <Container height={'100'}>
         <Styled.Description>
           <h1>Bem vindo (a)!</h1>
           <p>
