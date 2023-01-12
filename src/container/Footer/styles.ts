@@ -16,6 +16,6 @@ export const Container = styled.div`
     }
     @media (min-width: ${theme.screen.size.large}) {
       margin: 0;
-    } ;
+    }
   `}
 `;

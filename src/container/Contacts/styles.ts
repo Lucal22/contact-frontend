@@ -8,6 +8,7 @@ export const Container = styled.div`
   ${({ theme }) => css`
     min-height: 94vh;
     padding-top: 10rem;
+    padding-bottom: 2rem;
     color: ${theme.colors.blackColor};
     @media (min-width: ${theme.screen.size.large}) {
       padding-top: 15rem;
