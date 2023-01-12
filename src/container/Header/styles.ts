@@ -16,7 +16,6 @@ export const Header = styled.header`
 
 export const Logo = styled.div`
   position: relative;
-  max-width: 120rem;
   height: 8rem;
   display: flex;
   align-items: center;
