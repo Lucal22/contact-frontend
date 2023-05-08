@@ -5,10 +5,6 @@ import formSchema from '../../../utils/formSchema';
 import * as Styled from '../styles';
 import { registerRequest, verifyEmail } from '../../../utils/registerRequest';
 
-export type FormRegisterProps = {
-  children: React.ReactNode;
-};
-
 export default function FormRegister() {
   const [used, setUsed] = useState(false);
   const [submit, setSubmit] = useState(false);
