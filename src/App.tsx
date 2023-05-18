@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login/contacts" element={<Contacts />} />
-          <Route path="*" element={'PÁGINA NÃO EXISTE'} />
+          <Route path="*" element={<Login />} />
         </Routes>
         <Footer />
       </Router>

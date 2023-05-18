@@ -36,8 +36,8 @@ export default function ContactsEdit({
   return (
     <Styled.Edit>
       <Styled.EditContent>
-        <h1>Edite o contato</h1>
-        <p> Edite o contato selecionado abaixo:</p>
+        <h1>Update contact</h1>
+        <p> Update contact below:</p>
         <Styled.EditForm onSubmit={handleSubmit(updateContact)}>
           <Styled.EditFormField>
             <Styled.EditInput
@@ -57,17 +57,17 @@ export default function ContactsEdit({
           </Styled.EditFormField>
 
           <Styled.EditSubmitButton
-            aria-label="Salvar contato"
+            aria-label="Save contact"
             disabled={disable}
             type={'submit'}
-            value={disable ? 'Aguarde' : 'Salvar'}
+            value={disable ? 'Loading' : 'Save'}
           />
           <Styled.EditCancelButton
-            aria-label="Cancelar edição"
+            aria-label="Cancel"
             disabled={disable}
             type={'button'}
             onClick={cancel}
-            value={'Cancelar'}
+            value={'Cancel'}
           />
         </Styled.EditForm>
       </Styled.EditContent>

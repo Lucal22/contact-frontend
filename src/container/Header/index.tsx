@@ -14,10 +14,10 @@ export default function Header() {
     <Styled.Header>
       <Container height={'100'}>
         <Styled.Logo>
-          <h1>AGENDA</h1>
+          <h1>CONTACTS</h1>
           {auth?.token ? (
             <Styled.Logout onClick={logout}>
-              <a href="/">SAIR</a>
+              <a href="/">LOGOUT</a>
             </Styled.Logout>
           ) : null}
         </Styled.Logo>

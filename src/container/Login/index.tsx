@@ -21,14 +21,12 @@ export default function Login() {
     <Styled.Container>
       <Container height={'100'}>
         <Styled.Description>
-          <h1>Bem vindo (a)!</h1>
+          <h1>Welcome!</h1>
           <p>
-            Essa é a sua agenda de contatos. Este projeto permite que os
-            usuários façam login em sua conta e adicionem, atualizem e excluam
-            seus contatos. A funcionalidade de login garante a segurança dos
-            dados dos usuários, enquanto a funcionalidade de gerenciamento de
-            contatos os ajuda a manter uma lista atualizada e organizada de
-            pessoas importantes em suas vidas.
+            This is your contact notebook. This app allows the user to create an
+            account and login to save the contact of your beloved friends. The
+            user is also capable of changing informations of contacts and delete
+            them.
           </p>
         </Styled.Description>
         <Styled.Content>

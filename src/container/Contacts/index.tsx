@@ -44,11 +44,11 @@ export default function Contacts() {
         {auth?.token ? (
           <>
             <Styled.Description>
-              <h1>LISTA DE CONTATOS</h1>
+              <h1>Contact List</h1>
               <p>
-                Adicione, edite e exclua contatos da sua agenda. Utilize nomes e
-                números diferentes para não acabar enviando aquela mensagem para
-                o contatinho errado.
+                Add, edit and delete contacts from your list. Input different
+                informations to each contact so you dont send an important
+                message to the wrong person.
               </p>
             </Styled.Description>
             <Styled.NewContact onSubmit={handleSubmit(addContact)}>
@@ -70,16 +70,16 @@ export default function Contacts() {
               </Styled.FormField>
 
               <Styled.AddButton
-                aria-label="Adicionar contato"
+                aria-label="Add contact"
                 sending={sending}
                 type="submit"
                 disabled={sending}
-                value={sending ? 'Aguarde' : 'Adicionar'}
+                value={sending ? 'Loading' : 'Add'}
               />
             </Styled.NewContact>
             <Styled.ContactList>
               <Styled.LoadContacts onClick={() => loadContacts()}>
-                Carregar contatos
+                Load Contacts
               </Styled.LoadContacts>
               <Styled.Contacts>
                 {Object.entries(contacts).map((item) => {
@@ -97,7 +97,7 @@ export default function Contacts() {
             </Styled.ContactList>
           </>
         ) : (
-          <p>É necessário fazer login para visualizar os contatos</p>
+          <p>You first need to login to see your contacts</p>
         )}
       </Container>
     </Styled.Container>

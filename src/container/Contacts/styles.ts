@@ -216,6 +216,7 @@ export const EditInput = styled.input``;
 
 export const EditSubmitButton = styled.input`
   ${({ theme }) => css`
+    cursor: pointer;
     margin-top: 0.5rem;
     border: none;
     border-radius: 0.5rem;
@@ -226,6 +227,7 @@ export const EditSubmitButton = styled.input`
 
 export const EditCancelButton = styled.input`
   ${({ theme }) => css`
+    cursor: pointer;
     border: none;
     border-radius: 0.5rem;
     color: ${theme.colors.whiteColor};

@@ -3,16 +3,16 @@ import * as yup from 'yup';
 const contactSchema = yup.object().shape({
   name: yup
     .string()
-    .matches(/[a-zA-Z0-9.!#$%&’*+´/=?^_`{|}~-]*/, 'nome invalido')
-    .min(3, 'O nome tem que ter no mínimo 3 caractéres')
-    .max(15, 'O nome tem que ter no máximo 15 caractéres')
+    .matches(/[a-zA-Z0-9.!#$%&’*+´/=?^_`{|}~-]*/, 'Invalid name')
+    .min(3, 'Name require a minimum of 3 characters')
+    .max(15, 'Name require a maximum of 15 characters')
 
     .required(),
   phone: yup
     .string()
-    .min(8, 'Número inválido')
-    .max(12, 'O número precisa ter de 8 a 12 caractéres')
-    .matches(/[0-9]/, 'O número do contato só pode ter números.')
+    .min(8, 'Invalid number')
+    .max(12, 'Number require 8 to 12 characters')
+    .matches(/[0-9]/, 'You can only add numbers.')
     .required(),
 });
 

@@ -27,7 +27,7 @@ export default function FormLogin() {
       navigate('/login/contacts');
     } catch (e) {
       setFormData(true);
-      console.log('erro');
+      console.log(e);
     }
   }
 
@@ -42,21 +42,21 @@ export default function FormLogin() {
             placeholder={'email@email.com'}
           />
           <p>{errors.email?.message as ReactNode}</p>
-          <p> {formData ? '  email ou senha incorretos' : null}</p>
+          <p> {formData ? '  Incorrect email or password' : null}</p>
         </Styled.FormField>
         <Styled.FormField>
           <Styled.Input
             {...register('password')}
             type={'password'}
-            placeholder={'senha'}
+            placeholder={'password'}
           />
           <p>{errors.password?.message as ReactNode}</p>
         </Styled.FormField>
         <Styled.Button
-          aria-label="Entrar"
+          aria-label="Login"
           creating={isSending}
           type="submit"
-          value={'ENTRAR'}
+          value={'LOGIN'}
         />
       </Styled.Form>
     </Styled.Login>

@@ -35,14 +35,14 @@ export default function ContactsCard({
       <Styled.Name>{name}</Styled.Name>
       <Styled.Phone>{phone}</Styled.Phone>
       <Styled.EditButton
-        aria-label="Editar contato"
+        aria-label="Edit contact"
         disabled={onDelete || edit}
         onClick={() => setEdit(true)}
       >
         <FiEdit size={25} />
       </Styled.EditButton>
       <Styled.DeleteButton
-        aria-label="Deletar contato"
+        aria-label="Delete contact"
         disabled={onDelete || edit}
         onClick={() => deleteContact()}
       >

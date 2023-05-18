@@ -27,12 +27,12 @@ export default function FormRegister() {
     }
     await registerRequest(data.email, data.password);
     setSubmit(false);
-    alert('Conta criada com sucesso');
+    alert('Account created');
   }
 
   return (
     <Styled.CreateAccount>
-      <h1>{'Criar conta'}</h1>
+      <h1>{'Create account'}</h1>
       <Styled.Form onSubmit={handleSubmit(onSubmit)}>
         <Styled.FormField>
           <Styled.Input
@@ -41,22 +41,22 @@ export default function FormRegister() {
             placeholder={'email@email.com'}
           />
           <p>{errors.email?.message as ReactNode}</p>
-          <p> {used ? 'Email informado já foi utilizado' : null}</p>
+          <p> {used ? 'Email already being used.' : null}</p>
         </Styled.FormField>
         <Styled.FormField>
           <Styled.Input
             {...register('password')}
             type={'password'}
-            placeholder={'senha'}
+            placeholder={'password'}
           />
           <p>{errors.password?.message as ReactNode}</p>
         </Styled.FormField>
         <Styled.Button
-          aria-label="Criar conta"
+          aria-label="Create account"
           creating={submit}
           disabled={submit}
           type="submit"
-          value={submit ? 'AGUARDE' : 'CRIAR CONTA'}
+          value={submit ? 'Loading' : 'CREATE ACCOUNT'}
         />
       </Styled.Form>
     </Styled.CreateAccount>
