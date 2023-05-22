@@ -14,7 +14,7 @@ export default function Footer() {
       <p>Copyright © {year}</p>
       <p>
         Made by{' '}
-        <Links link={'https://portfolio-lucal.vercel.app/'} newTab={true}>
+        <Links link={'https://lucaldev.com/'} newTab={true}>
           Lucal
         </Links>
       </p>
